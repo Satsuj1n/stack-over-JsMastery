@@ -1,4 +1,4 @@
-import LocalSearchBar from "@/components/shared/navbar/search/LocalSearchBar";
+import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import Filter from "@/components/shared/Filter";
 import { UserFilters } from "@/constants/filters";
 import Link from "next/link";

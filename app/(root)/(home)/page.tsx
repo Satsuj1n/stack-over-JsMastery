@@ -1,5 +1,5 @@
 import Filter from "@/components/shared/Filter";
-import LocalSearchBar from "@/components/shared/navbar/search/LocalSearchBar";
+import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import Link from "next/link";
