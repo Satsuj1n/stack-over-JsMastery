@@ -1,23 +1,23 @@
 import Filter from "@/components/shared/Filter";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
-import {  QuestionFilters } from "@/constants/filters";
+import { QuestionFilters } from "@/constants/filters";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/cards/QuestionCard";
 import { getSavedQuestions } from "@/lib/actions/user.action";
 import { auth } from "@clerk/nextjs";
 
 export default async function Home() {
-    const { userId } = auth();
-    if(!userId) return null;
+  const { userId } = auth();
+  if (!userId) return null;
   const result = await getSavedQuestions({
-    clerkId: userId, 
+    clerkId: userId,
   });
 
   console.log(result.questions);
 
   return (
     <>
-        <h1 className="h1-bold text-dark100_light900">Saved Questions</h1>
+      <h1 className="h1-bold text-dark100_light900">Saved Questions</h1>
 
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearchBar
@@ -33,10 +33,9 @@ export default async function Home() {
         />
       </div>
 
-
       <div className="mt-10 flex w-full flex-col gap-6">
         {result.questions.length > 0 ? (
-          result.questions.map((question) => (
+          result.questions.map((question: any) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
