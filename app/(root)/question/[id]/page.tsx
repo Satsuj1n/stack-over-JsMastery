@@ -16,6 +16,7 @@ const Page = async ({ params }: { params: any }) => {
   const result = await getQuestionById({ questionId: params.id });
   const { userId: clerkId } = auth();
 
+
   let mongoUser;
   if (clerkId) {
     mongoUser = await getUserById({ userId: clerkId });
