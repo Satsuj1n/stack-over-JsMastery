@@ -16,7 +16,6 @@ const Page = async ({ params }: { params: any }) => {
   const result = await getQuestionById({ questionId: params.id });
   const { userId: clerkId } = auth();
 
-
   let mongoUser;
   if (clerkId) {
     mongoUser = await getUserById({ userId: clerkId });
@@ -82,7 +81,9 @@ const Page = async ({ params }: { params: any }) => {
           textStyles="small-medium text-dark400_light800"
         />
       </div>
-      <ParseHTML data={result.content} />
+      <div className="text-dark400_light800">
+        <ParseHTML data={result.content} />
+      </div>
 
       <div className="mt-8 flex flex-wrap gap-2">
         {result.tags.map((tag: any) => (
