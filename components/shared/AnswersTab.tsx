@@ -1,27 +1,39 @@
-import { getUserAnswers } from "@/lib/actions/user.action";
-import { SearchParamsProps } from "@/types";
-import AnswerCard from "../cards/AnswerCard";
+import { getUserAnswers } from '@/lib/actions/user.action';
+import { SearchParamsProps } from '@/types'
+import AnswerCard from '../cards/AnswerCard';
+import Pagination from './Pagination';
 
 interface Props extends SearchParamsProps {
   userId: string;
   clerkId?: string | null;
 }
 
-const AnswersTab = async ({ searchProps, userId, clerkId }: Props) => {
-    const results = await getUserAnswers({ userId, page: 1 });
+const AnswersTab = async ({ searchParams, userId, clerkId }: Props) => {
+  const result = await getUserAnswers({
+    userId,
+    page: searchParams.page ? +searchParams.page : 1,
+  })
+
   return (
     <>
-        {results.answers.map((answer) => (
-            <AnswerCard
-            key={answer._id}
-            _id={answer._id}
-            clerkId={clerkId}
-            author={answer.author}
-            upvotes={answer.upvotes.length}
-            question={answer.question}
-            createdAt={answer.createdAt}
-          />
-        ))}
+      {result.answers.map((item) => (
+        <AnswerCard 
+          key={item._id}
+          clerkId={clerkId}
+          _id={item._id}
+          question={item.question}
+          author={item.author}
+          upvotes={item.upvotes.length}
+          createdAt={item.createdAt}
+        />  
+      ))}
+
+      <div className="mt-10">
+        <Pagination 
+          pageNumber={searchParams?.page ? +searchParams.page : 1}
+          isNext={result.isNext}
+        />
+      </div>
     </>
   )
 }
