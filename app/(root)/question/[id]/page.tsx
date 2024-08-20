@@ -13,13 +13,15 @@ import Link from "next/link";
 import React from "react";
 
 const Page = async ({ params, searchParams }) => {
-  const result = await getQuestionById({ questionId: params.id });
   const { userId: clerkId } = auth();
 
   let mongoUser;
+
   if (clerkId) {
     mongoUser = await getUserById({ userId: clerkId });
   }
+
+  const result = await getQuestionById({ questionId: params.id });
 
   return (
     <>
@@ -31,10 +33,10 @@ const Page = async ({ params, searchParams }) => {
           >
             <Image
               src={result.author.picture}
-              alt="profile"
+              className="rounded-full"
               width={22}
               height={22}
-              className="rounded-full"
+              alt="profile"
             />
             <p className="paragraph-semibold text-dark300_light700">
               {result.author.name}
@@ -81,9 +83,8 @@ const Page = async ({ params, searchParams }) => {
           textStyles="small-medium text-dark400_light800"
         />
       </div>
-      <div className="text-dark400_light800">
-        <ParseHTML data={result.content} />
-      </div>
+
+      <ParseHTML data={result.content} />
 
       <div className="mt-8 flex flex-wrap gap-2">
         {result.tags.map((tag: any) => (
@@ -95,20 +96,20 @@ const Page = async ({ params, searchParams }) => {
           />
         ))}
       </div>
-      <div className="text-dark400_light800">
-        <AllAnswers
-          questionId={result._id}
-          userId={mongoUser._id}
-          totalAnswers={result.answers.length}
-          page={searchParams.page}
-          filter={searchParams?.filter}
-        />
-        <Answer
-          question={result.content}
-          questionId={JSON.stringify(result._id)}
-          authorId={JSON.stringify(mongoUser._id)}
-        />
-      </div>
+
+      <AllAnswers
+        questionId={result._id}
+        userId={mongoUser._id}
+        totalAnswers={result.answers.length}
+        page={searchParams?.page}
+        filter={searchParams?.filter}
+      />
+
+      <Answer
+        question={result.content}
+        questionId={JSON.stringify(result._id)}
+        authorId={JSON.stringify(mongoUser._id)}
+      />
     </>
   );
 };
