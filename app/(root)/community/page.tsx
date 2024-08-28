@@ -6,6 +6,7 @@ import { UserFilters } from "@/constants/filters";
 import { getAllUsers } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
+import Loading from "./loading";
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({
@@ -13,6 +14,7 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
     filter: searchParams.filter,
     page: searchParams.page ? +searchParams.page : 1,
   });
+
   return (
     <>
       <h1 className="h1-bold text-dark100_light900">All Users</h1>
