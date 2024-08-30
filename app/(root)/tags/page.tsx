@@ -6,6 +6,15 @@ import NoResult from "@/components/shared/NoResult";
 import { getAllTags } from "@/lib/actions/tag.actions";
 import { SearchParamsProps } from "@/types";
 import Pagination from "@/components/shared/Pagination";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tags | StackOverflow",
+  description: "StackOverflow is a Q&A tags page.",
+  icons: {
+    icon: "assets/images/site-logo.svg",
+  },
+};
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllTags({

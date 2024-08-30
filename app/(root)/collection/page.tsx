@@ -8,6 +8,15 @@ import { getSavedQuestions } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Loading from "./loading";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Collection | StackOverflow",
+  description: "StackOverflow is a Q&A collection page.",
+  icons: {
+    icon: "assets/images/site-logo.svg",
+  },
+};
 
 export default async function Home({ searchParams }: SearchParamsProps) {
   const { userId } = auth();

@@ -7,6 +7,15 @@ import { getAllUsers } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import Loading from "./loading";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Community | StackOverflow",
+  description: "StackOverflow is a Q&A community page.",
+  icons: {
+    icon: "assets/images/site-logo.svg",
+  },
+};
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({

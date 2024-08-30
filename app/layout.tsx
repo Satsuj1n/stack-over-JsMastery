@@ -20,8 +20,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "StackFlow",
-  description: "StackFlow is a Q&A platform for developers.",
+  title: "StackOverflow",
+  description: "StackOverflow is a Q&A platform for developers.",
   icons: {
     icon: "assets/images/site-logo.svg",
   },
