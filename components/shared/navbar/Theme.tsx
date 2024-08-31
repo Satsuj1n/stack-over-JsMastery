@@ -15,7 +15,7 @@ const Theme = () => {
   const { mode, setMode } = useTheme();
 
   return (
-    <Menubar className="relative border-none bg-transparent shadow-none">
+    <Menubar className="relative border-none bg-transparent shadow-none ">
       <MenubarMenu>
         <MenubarTrigger className="focus:bg-light-900 data-[slate=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[slate=open]:bg-dark-200">
           {mode === "light" ? (
@@ -36,11 +36,11 @@ const Theme = () => {
             />
           )}
         </MenubarTrigger>
-        <MenubarContent className="dark:border-dark-400 dark:bg-dark-300 absolute -right-12 mt-3 min-w-[120px] rounded border bg-light-800 border-slate-300 py-2">
+        <MenubarContent className="absolute -right-12 mt-3 min-w-[120px] rounded border border-slate-300 bg-light-800 py-2 dark:border-dark-400 dark:bg-dark-300">
           {themes.map((item) => (
             <MenubarItem
               key={item.value}
-              className="dark:focus:bg-dark-400 flex items-center gap-4 px-2.5 py-2"
+              className="background-light800_dark300 text-dark500_light700 flex cursor-pointer items-center gap-4 px-2.5 py-2 dark:focus:bg-dark-400"
               onClick={() => {
                 setMode(item.value);
                 if (item.value !== "system") {
