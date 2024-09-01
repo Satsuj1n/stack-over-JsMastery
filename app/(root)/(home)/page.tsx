@@ -18,7 +18,7 @@ import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Home | StackOverflow",
-  description: "StackOverflow is a Q&A home page.",
+  description: "StackOverflow is a Q&A home page",
   icons: {
     icon: "assets/images/site-logo.svg",
   },
