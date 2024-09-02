@@ -10,10 +10,16 @@ export default authMiddleware({
     "/profile/:id",
     "/community",
     "/jobs",
+    "/assets/icons/(.*)", // Para permitir ícones na pasta assets/icons
+    "/assets/images/(.*)", // Para permitir imagens na pasta assets/images
   ],
   ignoredRoutes: ["/api/webhook", "/api/chatgpt"],
 });
 
 export const config = {
-  matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: [
+    "/((?!.+.[w]+$|_next|static|public|favicon.ico|assets).*)", // Exclui rotas estáticas e adiciona novas condições
+    "/",
+    "/(api|trpc)(.*)",
+  ],
 };
