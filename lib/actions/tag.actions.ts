@@ -22,16 +22,35 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
     if (!user) {
       throw new Error("User not found");
     }
-    // Interaction ...
-    return [
-      { _id: "1", name: "tag1" },
-      { _id: "2", name: "tag2" },
+
+    // Add the tags displayed in the image to the userTags list
+    const userTags = [
+      { _id: "1", name: "test" },
+      { _id: "2", name: "React" },
+      { _id: "3", name: "Android" },
+      { _id: "4", name: "VSCODE" },
+      { _id: "5", name: "VSCODE-EXT" },
+      { _id: "6", name: "Node.js" },
+      { _id: "7", name: "aws" },
+      { _id: "8", name: "amazon" },
+      { _id: "9", name: "javascript" },
+      { _id: "10", name: "python" },
+      { _id: "11", name: "recursion" },
+      { _id: "12", name: "sys" },
     ];
+
+    // Shuffle the tags to return different tags each time
+    const shuffledTags = userTags.sort(() => 0.5 - Math.random());
+
+    // Return the top two tags (or more, as needed)
+    return shuffledTags.slice(0, 2);
+
   } catch (error) {
     console.error(error);
     throw error;
   }
 }
+
 
 export async function getAllTags(params: GetAllTagsParams) {
   try {
